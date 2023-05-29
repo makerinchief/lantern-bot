@@ -1,3 +1,5 @@
+// TODO: Format this for better readability.
+
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
 <head>
@@ -27,7 +29,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   </label>
   <script>
     function toggleCheckbox(element) {
-      var xhr = new XMLHttpRequest();    
+      const xhr = new XMLHttpRequest();    
       if(element.checked){
         xhr.open("GET", "/power?state=1", true);
       }

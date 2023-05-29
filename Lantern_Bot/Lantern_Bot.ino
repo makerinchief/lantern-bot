@@ -1,3 +1,7 @@
+// Lantern Bot
+// Justin C Kirk 2023
+// A simple web server to control WS2812b RGB Leds from a browser.
+
 #include <Arduino.h>
 #include <WiFi.h>
 #include <AsyncTCP.h>
@@ -8,8 +12,8 @@
 
 #include "index.h"
 
-const char* ssid = "SSID_GOES_HERE";
-const char* password = "PASSWORD_GOES_HERE";
+const char* WIFI_SSID = "SSID_GOES_HERE";
+const char* WIFI_PASS = "PASSWORD_GOES_HERE";
 
 // Params for GET request
 const char* STATE_PARAM = "state";
@@ -20,6 +24,7 @@ AsyncWebServer server(80);
 
 #define NUM_LEDS 24
 #define DATA_PIN 23
+
 CRGB leds[NUM_LEDS];
 
 void setup(){
@@ -30,7 +35,7 @@ void setup(){
 
   WiFi.mode(WIFI_STA);
   WiFi.setHostname("esp32");
-  WiFi.begin(ssid, password);
+  WiFi.begin(WIFI_SSID, WIFI_PASS);
 
   if (WiFi.waitForConnectResult() != WL_CONNECTED) {
     Serial.printf("WiFi Failed!\n");
