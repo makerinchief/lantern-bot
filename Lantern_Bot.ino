@@ -1,6 +1,14 @@
-// Lantern Bot
-// Justin C Kirk 2023
-// A simple web server to control WS2812b RGB Leds from a browser.
+/*
+  Lantern Bot ESP32
+  Justin C Kirk
+
+  Makerinchief 
+  www.makerinchief.com
+  info@makerinchief.com
+
+  Please read README.md for details
+
+*/
 
 #include <Arduino.h>
 #include <WiFi.h>
