@@ -6,6 +6,10 @@ A laser cut lantern using multiple segments of WS2812b LEDs.
 
 - 1 x Arduino Nano
 - 1 x Nano Breakout Board with headers for NRF2401 Module
+- 8 x Segments of 6 WS2812b LEDs
+- 6 x Corner RGB LED PCB Connector
+- 1 x JST SM Male Connector Pigtail
+- 1 x JST SM Female Connector Pigtail
 
 ### TOOLS NEEDED
 
