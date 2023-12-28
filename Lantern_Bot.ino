@@ -11,7 +11,7 @@
 */
 
 #include <FastLED.h>
-#include "colors.hpp"
+#include "colors.h"
 
 void setup() {
   Serial.begin(115200);
