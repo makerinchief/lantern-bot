@@ -1,5 +1,7 @@
 # Lantern Bot
 
+### Advanced Branch
+
 A laser cut lantern using multiple segments of WS2812b LEDs.
 
 ### PARTS
@@ -27,6 +29,6 @@ A laser cut lantern using multiple segments of WS2812b LEDs.
 
 ### OVERVIEW
 
-The Lantern Bot is laser cut from birch plywood and uses WS2812b LEDs to
-allow a wide range of colors. Printer paper is used as a simple diffuser
-which also allows printing images on each side allowing for awesome visual effects!
+https://www.makerinchief.com/kits.html
+
+The Lantern Bot controls 8 strips of WS2812b LEDs to give a room some extra light. An Arduino Nano is used to control the strips which shine behind printer paper. Baltic birch plywood is laser cut to create the chassis and custom PCBs are used to ease the soldering process. A NRF24L01 radio module can be added to allow remote control.

@@ -9,7 +9,7 @@
   Please read README.md for details
 
 */
-
+// Look at lantern.ino for functions controlling the Lantern Bot
 #include <FastLED.h>
 #include "colors.h"
 
