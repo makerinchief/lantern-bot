@@ -10,7 +10,20 @@
 */
 
 #include <FastLED.h>
-#include "colors.h"
+// #include "colors.h"
+
+// Create some variables for colors
+CRGB off = CRGB(0, 0, 0);
+CRGB white = CRGB(255, 255, 255);
+CRGB red = CRGB(255, 0, 0);
+CRGB green = CRGB(0, 255, 0);
+CRGB blue = CRGB(0, 0, 255);
+CRGB magenta = CRGB(255, 0, 255);
+CRGB yellow = CRGB(255, 255, 0);
+CRGB cyan = CRGB(0, 255, 255);
+CRGB orange = CRGB(180, 180, 0);
+CRGB light_green = CRGB(100, 200, 0);
+CRGB light_blue = CRGB(0, 100, 200);
 
 //PWM Pin to control LEDs
 const int LED_PIN = 9;
@@ -25,82 +38,81 @@ const int SEGMENT_COUNT = 8;
 const int LED_COUNT = SEGMENT_COUNT * LEDS_PER_SEGMENT;
 
 //Then all the leds can be represented by a grid of numbers
-int lantern_segments[SEGMENT_COUNT][LEDS_PER_SEGMENT] = {0};
+// int lantern_segments[SEGMENT_COUNT][LEDS_PER_SEGMENT] = {0};
 
+// Create an array for all the LEDs
 CRGB leds[LED_COUNT];
-byte leds_brightness = 100;
 
-void lantern_init_grid() {
-
-  int led_num = 0;
-
-  for (int i = 0; i < SEGMENT_COUNT; i++) {
-    for (int j = 0; j < LEDS_PER_SEGMENT; j ++ ) {
-      lantern_segments[i][j] = led_num;
-      led_num += 1;
-    }
-  }
-}
-
-void lantern_init() {
-  FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, LED_COUNT);
-  FastLED.setBrightness(50);
-  lantern_init_grid();
-}
-
-void lantern_update() {
-  FastLED.show();
-}
-
-void set_led_color(int led_num, CRGB led_color) {
-  leds[led_num] = led_color;
-}
-
-void set_color(CRGB color) {
-  for (int i = 0; i < LED_COUNT; i++) {
-    leds[i] = color;
-  }
-}
-
-void set_brightness(byte value) {
-  FastLED.setBrightness(value);
-}
-
-void set_segment_color(int segment, CRGB color) {
-  for (int i = 0; i < LEDS_PER_SEGMENT; i++) {    
-    int led_num = lantern_segments[segment][i];    
-    set_led_color(led_num, color);
-  }
-  Serial.println();
-}
-
+// byte leds_brightness = 100;
+// void lantern_init_grid() {
+//   int led_num = 0;
+//   for (int i = 0; i < SEGMENT_COUNT; i++) {
+//     for (int j = 0; j < LEDS_PER_SEGMENT; j ++ ) {
+//       lantern_segments[i][j] = led_num;
+//       led_num += 1;
+//     }
+//   }
+// }
+// void lantern_init() {
+//   FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, LED_COUNT);
+//   FastLED.setBrightness(50);
+//   lantern_init_grid();
+// }
+// void lantern_update() {
+//   FastLED.show();
+// }
+// void set_led_color(int led_num, CRGB led_color) {
+//   leds[led_num] = led_color;
+// }
+// void set_color(CRGB color) {
+//   for (int i = 0; i < LED_COUNT; i++) {
+//     leds[i] = color;
+//   }
+// }
+// void set_brightness(byte value) {
+//   FastLED.setBrightness(value);
+// }
+// void set_segment_color(int segment, CRGB color) {
+//   for (int i = 0; i < LEDS_PER_SEGMENT; i++) {
+//     int led_num = lantern_segments[segment][i];
+//     set_led_color(led_num, color);
+//   }
+//   Serial.println();
+// }
 // ACTIONS/SCRIPTS
-
 //Turns each led on, one at a time.
-void single_file(int delay_time, CRGB color) {
-  for (int i = 0; i < LED_COUNT; i++) {
-    set_led_color(i, color);
-    delay(delay_time);
-  }
-}
-
+// void single_file(int delay_time, CRGB color) {
+//   for (int i = 0; i < LED_COUNT; i++) {
+//     set_led_color(i, color);
+//     delay(delay_time);
+//   }
+// }
 
 void setup() {
   Serial.begin(115200);
-  
-  lantern_init();
 
-  set_segment_color(0, red);
-  set_segment_color(1, green);
-  set_segment_color(2, blue);
-  set_segment_color(3, magenta);
-  set_segment_color(4, yellow);
-  set_segment_color(5, cyan);
-  set_segment_color(6, orange);
-  set_segment_color(7, light_blue);
-  
-  lantern_update();
-  
+  FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, LED_COUNT);
+  FastLED.setBrightness(50);
+
+  Serial.println(LED_COUNT);
+
+  for (int i = 0; i < LED_COUNT; i++) {
+    leds[i] = white;
+  }
+
+  FastLED.show();
+
+  // lantern_init_grid();
+  // lantern_init();
+  // set_segment_color(0, red);
+  // set_segment_color(1, green);
+  // set_segment_color(2, blue);
+  // set_segment_color(3, magenta);
+  // set_segment_color(4, yellow);
+  // set_segment_color(5, cyan);
+  // set_segment_color(6, orange);
+  // set_segment_color(7, light_blue);
+  // lantern_update();
 }
 
 void loop() {
